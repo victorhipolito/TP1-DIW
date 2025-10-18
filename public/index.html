@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog VHR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <!--Barra superior - PESQUISA-->
+    <header class="topnav">
+        <a href="index.html"><img src="/public/images/logoblog.png"></a>
+        <input type="text" placeholder="Pesquisar...">
+    </header>
+    <!--Barra lateral-->
+    <nav class="barra-lateral">
+        <a href="index.html" class="ativo">Home</a>
+        <a href="addjogo.html">Adicionar jogo</a>
+        <a href="consoles.html">Consoles</a>
+        <a href="categorias.html">Categorias</a>
+    </nav>
+    <main class="parte-principal">
+        <article class="introducao">
+            <h1><b>Blog do VHR</b></h1>
+            <p><b>ESSE TEXTO FOI ESCRITO POR IA E SERÁ ALTERADO NO FUTURO</b><br>Seja bem-vindo ao Blog do VHR, um
+                espaço dedicado aos apaixonados por videogames! Aqui, compartilho minha jornada como jogador, trazendo
+                experiências reais com os jogos que explorei, sejam eles lançamentos recentes ou clássicos que marcaram
+                época. O objetivo do blog é oferecer um olhar pessoal e aprofundado sobre cada título, sempre com
+                transparência, dedicação e, claro, muita paixão pelo universo gamer.
+                <br>
+                Em cada postagem, você encontrará detalhes como o número de horas jogadas, capturas de tela exclusivas
+                tiradas durante minha ga    meplay, além de curiosidades e fatos interessantes sobre o desenvolvimento ou o
+                impacto do jogo. Tudo isso ajuda a contextualizar melhor a experiência e dá ao leitor uma visão mais
+                completa — e honesta — do que esperar de cada título. Seja você um jogador casual ou hardcore, aqui
+                sempre tem algo novo para descobrir.
+                <br>
+                Além disso, o Blog do VHR vai além das simples análises: minha proposta é criar um ambiente de troca
+                entre quem joga e quem quer jogar. Convido você a interagir nos comentários, sugerir jogos e debater
+                comigo sobre histórias, mecânicas e tudo o que torna os games uma forma tão rica de entretenimento.
+                Prepare-se para mergulhar fundo em cada aventura digital comigo.
+            </p>
+            <hr>
+        </article>
+        <div id="mjogos">
+            <section class="mais-horas">
+                <h2>Mais Horas Jogadas</h2>
+                <div id="criar-mh">
+
+                </div>
+                <h2 style="margin-top: 10px;"><b>Ver Mais...</b></h2>
+            </section>
+            <section class="maior-nota">
+                <h2>Maior Nota</h2>
+                <div id="criar-mn">
+
+                </div>
+            </section>
+        </div>
+        <hr>
+        <footer>
+            <h4>Victor Hipólito - Todos os Direitos Reservados<br>@vitcorhipolito_sbr</h4>
+        </footer>
+        <hr>
+    </main>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById("criar-mh").addEventListener('load', inserirdadosmh())
+        function inserirdadosmh() {
+            let criarmh = document.getElementById("criar-mh")
+            let maishoras = organizar(colecao).mh
+            strInserirHTML = ``
+            strInserirHTML += `<div class="row row-cols-1 row-cols-md-3 g-4" style="">`
+            for (let i = 0; i < 6; i++){
+                let jogoatual = colecao[maishoras[i]-1]
+                strInserirHTML += `<div class="col">
+                                        <div class="card h-100 border-white">
+                                            <div class="card-header"><h3><b>${i+1}</b> - ${jogoatual.horas} Horas</h3></div>
+                                            <img src="${jogoatual.imagem}" class="card-img-top" alt="${jogoatual.nome}" style="padding: 10px; border-radius: 5px;">
+                                            <div class="card-body">
+                                                <h2 class="card-title">${jogoatual.nome}</h5>
+                                                <p class="card-text">${jogoatual.sobre}</p>
+                                            </div>
+                                        </div>
+                                    </div>`
+
+            }
+            strInserirHTML += `</div>`
+            /*
+            strInserirHTML = `<div id="l1">`
+            for (let i = 0; i < 3; i++) {
+                let jogoatual = colecao[maishoras[i] - 1]
+                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
+            }
+            strInserirHTML += '</div><br>'
+            strInserirHTML += '<div id="l1">'
+            for (let i = 3; i < 6; i++) {
+                let jogoatual = colecao[maishoras[i] - 1]
+                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
+            }
+            strInserirHTML += '</div>'
+            */
+
+            criarmh.innerHTML = strInserirHTML
+        }
+
+        document.getElementById("criar-mn").addEventListener('load', inserirdadosmn())
+        function inserirdadosmn() {
+            let criarmn = document.getElementById("criar-mn")
+            let maiornota = organizar(colecao).mn
+            strInserirHTML = `<div id="l1">`
+            for (let i = 0; i < 3; i++) {
+                let jogoatual = colecao[maiornota[i] - 1]
+                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
+            }
+            strInserirHTML += '</div><br>'
+            strInserirHTML += '<div id="l1">'
+            for (let i = 3; i < 6; i++) {
+                let jogoatual = colecao[maiornota[i] - 1]
+                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
+            }
+            strInserirHTML += '</div>'
+
+            criarmn.innerHTML = strInserirHTML
+        }
+
+    </script>
+</body>
+
+</html>
