@@ -51,7 +51,6 @@
                 <div id="criar-mh">
 
                 </div>
-                <h2 style="margin-top: 10px;"><b>Ver Mais...</b></h2>
             </section>
             <section class="maior-nota">
                 <h2>Maior Nota</h2>
@@ -85,26 +84,12 @@
                                                 <h2 class="card-title">${jogoatual.nome}</h5>
                                                 <p class="card-text">${jogoatual.sobre}</p>
                                             </div>
+                                            <div class="card-footer bg-transparent"><a class="btn btn-light btn-outline-primary" href="detalhes.html?id=${jogoatual.id}">Ver mais</a></div>
                                         </div>
                                     </div>`
 
             }
             strInserirHTML += `</div>`
-            /*
-            strInserirHTML = `<div id="l1">`
-            for (let i = 0; i < 3; i++) {
-                let jogoatual = colecao[maishoras[i] - 1]
-                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
-            }
-            strInserirHTML += '</div><br>'
-            strInserirHTML += '<div id="l1">'
-            for (let i = 3; i < 6; i++) {
-                let jogoatual = colecao[maishoras[i] - 1]
-                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
-            }
-            strInserirHTML += '</div>'
-            */
-
             criarmh.innerHTML = strInserirHTML
         }
 
@@ -112,19 +97,24 @@
         function inserirdadosmn() {
             let criarmn = document.getElementById("criar-mn")
             let maiornota = organizar(colecao).mn
-            strInserirHTML = `<div id="l1">`
-            for (let i = 0; i < 3; i++) {
-                let jogoatual = colecao[maiornota[i] - 1]
-                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
-            }
-            strInserirHTML += '</div><br>'
-            strInserirHTML += '<div id="l1">'
-            for (let i = 3; i < 6; i++) {
-                let jogoatual = colecao[maiornota[i] - 1]
-                strInserirHTML += `<a href="detalhes.html?id=${jogoatual.id}"><img src="${jogoatual.imagem}"></a>`
-            }
-            strInserirHTML += '</div>'
+            strInserirHTML = ``
+            strInserirHTML += `<div class="row row-cols-1 row-cols-md-3 g-4" style="">`
+            for (let i = 0; i < 6; i++){
+                let jogoatual = colecao[maiornota[i]-1]
+                strInserirHTML += `<div class="col">
+                                        <div class="card h-100 border-white">
+                                            <div class="card-header"><h3>${jogoatual.nota}</h3></div>
+                                            <img src="${jogoatual.imagem}" class="card-img-top" alt="${jogoatual.nome}" style="padding: 10px; border-radius: 5px;">
+                                            <div class="card-body">
+                                                <h2 class="card-title">${jogoatual.nome}</h5>
+                                                <p class="card-text">${jogoatual.sobre}</p>
+                                            </div>
+                                            <div class="card-footer bg-transparent"><a class="btn btn-light btn-outline-primary" href="detalhes.html?id=${jogoatual.id}">Ver mais</a></div>
+                                        </div>
+                                    </div>`
 
+            }
+            strInserirHTML += `</div>`
             criarmn.innerHTML = strInserirHTML
         }
 

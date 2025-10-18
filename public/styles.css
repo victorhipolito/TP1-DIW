@@ -86,6 +86,9 @@ img {
     border-radius: 5px;
 }
 
+.parte-principal a {
+    font-size: larger;
+}
 
 .parte-principal footer {
     text-align: center;
