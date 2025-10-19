@@ -124,7 +124,7 @@ img {
     font-size: x-large;
     margin-left: 30px;
     justify-content: left;
-    max-width: 50%;
+    max-width: 70%;
 }
 
 
@@ -251,14 +251,23 @@ img {
     /*Parte Principal*/
     .parte-principal {
         position: relative;
-        top: 130px;
+        top: 140px;
     }
 
     .parte-principal p {
         margin: 5px;
     }
 
+    .tercos {
+        display: flex;
+        flex-direction: column;
+    }
 
-
+    #analise {
+    font-size: x-large;
+    margin-left: 0px;
+    justify-content: left;
+    max-width: 100%;
+}
 
 }
