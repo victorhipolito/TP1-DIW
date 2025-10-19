@@ -137,29 +137,11 @@ img {
             height: 60px;
             padding: 10px 10px;
         }
-    
-    .topnav input {
-            font-size: 30px;
-        }
-
-    /*Barra lateral*/
-    .barra-lateral {
-        flex-direction: column;
-        top: 60px;
-        width: 220px;
-        height: 100%;
-    }
-
-    .barra-lateral a {
-        font-size: 25px;
-        padding: 20px;
-    }
 
     /*Parte Principal - INDEX*/
     .parte-principal {
         max-height: calc(100% - 60px);
         top: 60px;
-        left: 220px;
     }
 
     .parte-principal footer {
@@ -181,29 +163,10 @@ img {
         transform-origin: 20% 50%;
     }
 
-    .topnav input {
-        font-size: 20px;
-        margin-right:10px;
-    }
-
-    /*Barra lateral*/
-    .barra-lateral {
-        flex-direction: column;
-        top: 60px;
-        width: 190px;
-        height: 100%;
-    }
-
-    .barra-lateral a {
-        font-size: 20px;
-        padding: 20px;
-    }
-
     /*Parte Principal*/
     .parte-principal {
         max-height: calc(100% - 60px);
         top: 60px;
-        left: 190px;
     }
 
     .parte-principal #mjogos {
@@ -226,32 +189,10 @@ img {
         transform-origin: 20% 80%;
     }
 
-    .topnav input {
-        font-size: 15px;
-        width: 100px;
-        margin-right: 5px;
-    }
-
-    /*Barra Lateral - para celulares, fica em cima*/
-    .barra-lateral {
-        flex-direction: row;
-        top: 8%;
-        width: 100%;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-    }
-
-    .barra-lateral a {
-        min-width: 110px;
-        font-size: 15px;
-        margin: 1px;
-        padding: 15px 5px;
-    }
-
     /*Parte Principal*/
     .parte-principal {
         position: relative;
-        top: 140px;
+        top: 100px;
     }
 
     .parte-principal p {
