@@ -71,7 +71,7 @@ img {
     text-align: justify;
 }
 
-.parte-principal #mjogos h2 {
+.parte-principal #mjogos h2, .todos-jogos h2{
     padding: 1px;
     background-color: #c7d5e0;
     border-radius: 5px;
@@ -214,19 +214,6 @@ img {
         flex-direction: column;
     }
 
-
-    .mais-horas, .maior-nota{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    #l1{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
 }
 
 @media screen and (max-width: 767px) {
@@ -274,14 +261,7 @@ img {
         margin: 5px;
     }
 
-    .parte-principal div {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .mais-horas, .maior-nota {
-        display: flexbox;
-        flex-direction: row;
-    }
+
+
 
 }

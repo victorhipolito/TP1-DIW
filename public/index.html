@@ -21,7 +21,6 @@
         <a href="index.html" class="ativo">Home</a>
         <a href="addjogo.html">Adicionar jogo</a>
         <a href="consoles.html">Consoles</a>
-        <a href="categorias.html">Categorias</a>
     </nav>
     <main class="parte-principal">
         <article class="introducao">
@@ -48,20 +47,29 @@
         <div id="mjogos">
             <section class="mais-horas">
                 <h2>Mais Horas Jogadas</h2>
-                <div id="criar-mh">
+                <div id="criar-mh" class="carousel slide" data-bs-ride="carousel">
 
                 </div>
             </section>
             <section class="maior-nota">
                 <h2>Maior Nota</h2>
-                <div id="criar-mn">
+                <div id="criar-mn" class="carousel slide" data-bs-ride="carousel">
 
                 </div>
-            </section>
         </div>
+        <section class="todos-jogos">
+            <h2>Todos os Jogos</h2>
+            <div id="criar-tj">
+
+            </div>
+        </section>
         <hr>
         <footer>
-            <h4>Victor Hipólito - Todos os Direitos Reservados<br>@vitcorhipolito_sbr</h4>
+            <h2>Informações do Aluno</h2>
+            <div id="">
+            <h4><b>Sobre</b></h3>
+            <p>Nome: Victor Hipólito Silva Braga Reis<br>Curso: Ciências da Computação<br>1o período<br></p>
+            </div>
         </footer>
         <hr>
     </main>
@@ -70,41 +78,74 @@
     <script>
         document.getElementById("criar-mh").addEventListener('load', inserirdadosmh())
         function inserirdadosmh() {
-            let criarmh = document.getElementById("criar-mh")
+            let inner = document.getElementById("criar-mh")
             let maishoras = organizar(colecao).mh
-            strInserirHTML = ``
-            strInserirHTML += `<div class="row row-cols-1 row-cols-md-3 g-4" style="">`
+            strInserirInner = `<div class="carousel-inner">`
             for (let i = 0; i < 6; i++){
                 let jogoatual = colecao[maishoras[i]-1]
-                strInserirHTML += `<div class="col">
-                                        <div class="card h-100 border-white">
-                                            <div class="card-header"><h3><b>${i+1}</b> - ${jogoatual.horas} Horas</h3></div>
-                                            <img src="${jogoatual.imagem}" class="card-img-top" alt="${jogoatual.nome}" style="padding: 10px; border-radius: 5px;">
-                                            <div class="card-body">
-                                                <h2 class="card-title">${jogoatual.nome}</h5>
-                                                <p class="card-text">${jogoatual.sobre}</p>
-                                            </div>
-                                            <div class="card-footer bg-transparent"><a class="btn btn-light btn-outline-primary" href="detalhes.html?id=${jogoatual.id}">Ver mais</a></div>
-                                        </div>
+                // inner
+                if (i==0) strInserirInner += `<div class="carousel-item active">`;
+                else strInserirInner += `<div class="carousel-item">`;
+                strInserirInner += `<a href="detalhes.html?id=${jogoatual.id}"><img src="images/covers/h/${jogoatual.imagem}.png" class="d-block w-100" alt="${jogoatual.nome}"></a>
+                                    <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="background-color: rgba(255,255,255,0.5); color: black; border-radius: 5px;">${jogoatual.horas} Horas</h5>
+                                    <p style="background-color: rgba(255,255,255,0.5); color:black; border-radius: 5px; padding: 5px">${jogoatual.sobre}</p>
+                                    </div>
                                     </div>`
-
-            }
-            strInserirHTML += `</div>`
-            criarmh.innerHTML = strInserirHTML
+            } 
+            strInserirInner += `</div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#criar-mh" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#criar-mh" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                </div>`
+            inner.innerHTML = strInserirInner
         }
 
         document.getElementById("criar-mn").addEventListener('load', inserirdadosmn())
         function inserirdadosmn() {
-            let criarmn = document.getElementById("criar-mn")
+            let inner = document.getElementById("criar-mn")
             let maiornota = organizar(colecao).mn
-            strInserirHTML = ``
-            strInserirHTML += `<div class="row row-cols-1 row-cols-md-3 g-4" style="">`
+            strInserirInner = `<div class="carousel-inner">`
             for (let i = 0; i < 6; i++){
                 let jogoatual = colecao[maiornota[i]-1]
+                // inner
+                if (i==0) strInserirInner += `<div class="carousel-item active">`;
+                else strInserirInner += `<div class="carousel-item">`;
+                strInserirInner += `<a href="detalhes.html?id=${jogoatual.id}"><img src="images/covers/h/${jogoatual.imagem}.png" class="d-block w-100" alt="${jogoatual.nome}"></a>
+                                    <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="background-color: rgba(255,255,255,0.5); color: black; border-radius: 5px;">${jogoatual.nota}</h5>
+                                    <p style="background-color: rgba(255,255,255,0.5); color:black; border-radius: 5px; padding: 5px">${jogoatual.sobre}</p>
+                                    </div>
+                                    </div>`
+            } 
+            strInserirInner += `</div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#criar-mn" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#criar-mn" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                </div>`
+            inner.innerHTML = strInserirInner
+        }
+
+        document.getElementById("criar-tj").addEventListener('load', inserirdadostj())
+        function inserirdadostj() {
+            let criartj = document.getElementById("criar-tj")
+            strInserirHTML = ``
+            strInserirHTML += `<div class="row row-cols-1 row-cols-md-3 g-4" style="">`
+            for (let i = 0; i < 10; i++){
+                let jogoatual = colecao[i]
                 strInserirHTML += `<div class="col">
                                         <div class="card h-100 border-white">
-                                            <div class="card-header"><h3>${jogoatual.nota}</h3></div>
-                                            <img src="${jogoatual.imagem}" class="card-img-top" alt="${jogoatual.nome}" style="padding: 10px; border-radius: 5px;">
+                                            <img src="images/covers/v/${jogoatual.imagem}.png" class="card-img-top" alt="${jogoatual.nome}" style="padding: 10px; border-radius: 5px;">
                                             <div class="card-body">
                                                 <h2 class="card-title">${jogoatual.nome}</h5>
                                                 <p class="card-text">${jogoatual.sobre}</p>
@@ -115,9 +156,8 @@
 
             }
             strInserirHTML += `</div>`
-            criarmn.innerHTML = strInserirHTML
+            criartj.innerHTML = strInserirHTML
         }
-
     </script>
 </body>
 
